@@ -25,12 +25,12 @@
 const RECIPIENTS = ["jung1@tcs.woolworths.com.au"];
 
 // Spreadsheet data
-var ss = SpreadsheetApp.openById("1k6aWvUz4FT8GXhiuxLTCX8K3s2bJDqBzhOBS06tHf2w");
-var generatorSheet = ss.getSheetByName('Generator');
+const ss = SpreadsheetApp.openById("1k6aWvUz4FT8GXhiuxLTCX8K3s2bJDqBzhOBS06tHf2w");
+const generatorSheet = ss.getSheetByName('Generator');
 
 // Configurations from the generator shet.
-var PROJECT_ID = generatorSheet.getRange(2,3).getValue();
-var DATASET_ID = generatorSheet.getRange(3,3).getValue();
+const PROJECT_ID = generatorSheet.getRange(2,3).getValue();
+const DATASET_ID = generatorSheet.getRange(3,3).getValue();
 
 // Variable
 var cellValues = createCellArray(2000);
