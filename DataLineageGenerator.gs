@@ -1,10 +1,4 @@
 /**
- * The recipients who have view access to the sheet.
- */
-const RECIPIENTS = ["jung1@tcs.woolworths.com.au"
-                   ];
-
-/**
  * Copyright Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,10 +14,15 @@ const RECIPIENTS = ["jung1@tcs.woolworths.com.au"
  * limitations under the License.
  *
  *
- * Created by Jeffrey Ung <xjug1>
+ * Created by Jeffrey Ung
  * Date: 06/02/2020
  *
  */
+
+ /**
+ * The recipients who have view access to the sheet.
+ */
+const RECIPIENTS = ["jung1@tcs.woolworths.com.au"];
 
 // Spreadsheet data
 var ss = SpreadsheetApp.openById("1k6aWvUz4FT8GXhiuxLTCX8K3s2bJDqBzhOBS06tHf2w");
@@ -80,7 +79,7 @@ function addLineageSheetEntries() {
     updateCells(PROJECT_ID, DATASET_ID, item.tableReference.tableId, 1);
   });
   cellValues[0][maxCol + 1] = "Comments";
-  cellValues[0][maxCol + 2] = "Google Groups (Provided by IM Data Tools Team)";
+  cellValues[0][maxCol + 2] = "Google Groups";
 }
   
 /**
