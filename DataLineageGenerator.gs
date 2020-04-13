@@ -37,6 +37,9 @@ var cellValues = createCellArray(2000);
 var row = 1;
 var maxCol = 1;
 
+// Dynamic programming
+var dp = {}
+
 /**
  * Creates a new cell array.
  * @rowCount is the amount of rows to be created.
@@ -120,7 +123,10 @@ function updateCells(projectId, datasetId, tableId, col) {
  * @return the dependency list of the table.
  */
 function getDependencyList(projectId, datasetId, tableId) {
-  table = BigQuery.Tables.get(projectId, datasetId, tableId);
+  if (dp[projectId + datasetId + tableId] == null)
+    dp[projectId + datasetId + tableId] = BigQuery.Tables.get(projectId, datasetId, tableId)
+  table = dp[projectId + datasetId + tableId]
+  
   if(table == null || table.view == null)
     return [];
   viewQuery = table.view.query;
@@ -129,7 +135,6 @@ function getDependencyList(projectId, datasetId, tableId) {
   dependencyList = viewQuery.match(re);
   return uniq(dependencyList);
 }
-
 /**
  * Filters out any duplicates in a list.
  * @param a is the list to filter.
